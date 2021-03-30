@@ -1,0 +1,14 @@
+.table-item{
+    overflow: auto;
+    width: 100%;
+}
+.table-container{
+    overflow: auto;
+}
+label{
+    width: 25%;
+}
+.form-group{
+    display: flex;
+    gap: 5px;
+}

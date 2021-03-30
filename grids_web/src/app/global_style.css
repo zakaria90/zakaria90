@@ -1,0 +1,17 @@
+:root {
+    --primary-color: #1e90ff;
+    --secondary-color: #eceaea;
+    --selected-row-color:#5f9ea0;
+    --cell-color:linear-gradient(-45deg,#5d6fd4,#00bcd4);
+    --cell-color-hovered:linear-gradient(-45deg,#4c59a5,#52daec);
+    --table-width: 49%;
+    --text-size:13px;
+    --cell-width:150px;
+    --cell-height:150px;
+    --delete-icon-color:brown;
+    --update-icon-color:green;
+    --add-icon-color:#1e90ff;
+    --icon-size:30px;
+    --secondary-font-color:#939393;
+    --primary-font-color:#ffffff;
+  }

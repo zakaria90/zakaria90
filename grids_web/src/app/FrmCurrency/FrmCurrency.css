@@ -1,0 +1,52 @@
+.table-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.d-flex{
+    gap: 20px;
+    justify-content: center;
+}
+*{
+    font-size: 13px;
+}
+.actions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+}
+.actions>*{
+    cursor: pointer;
+}
+label{
+    width: 100%;
+}
+
+.active {
+    background-color:var(--selected-row-color)!important;
+    color: white!important;
+}
+tr{
+    cursor: pointer;
+}
+.delete-icon{
+    color:#be1414;
+}
+select option:disabled {
+    background-color: grey;
+    color:white;
+    font-weight: bold;
+    cursor:not-allowed;
+}
+.curreny-grid{
+    display: grid;
+     grid-template-columns: repeat(auto-fill, minmax(48vw, 1fr));
+     padding-top: 10px;
+     gap: 20px;
+}
+.curreny-grid>div{
+    padding: 0px 10px;
+}

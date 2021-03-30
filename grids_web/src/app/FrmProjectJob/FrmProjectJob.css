@@ -1,0 +1,67 @@
+ul, #treeUrl {
+    list-style-type: none;
+  }
+  
+  #treeUrl {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .caret {
+    cursor: pointer;
+    -webkit-user-select: none; /* Safari 3.1+ */
+    -moz-user-select: none; /* Firefox 2+ */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none;
+  }
+  
+  .caret::before {
+    content: "\25B6";
+    color: black;
+    display: inline-block;
+    margin-right: 6px;
+  }
+  
+  .caret-down::before {
+    -ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Safari */
+    transform: rotate(90deg);  
+  }
+  
+  .nested {
+    display: none;
+  }
+  
+  .expanded {
+    display: block;
+     margin-left: 5%;
+    padding: 0;
+  }
+.nodeTitle{
+    display: flex;
+    gap: 10px;
+    color: var(--primary-color);
+    font-size: 16px;
+    padding: 10px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+      }
+.nodeTitle:hover{
+  background-color: var(--secondary-color);
+}
+ 
+.icon{
+    cursor: pointer;
+    font-size: 16px;
+}
+.rotate{
+  transform: rotateZ(90deg);
+}
+.deleteIcon{
+  color: brown;
+}
+.updateIcon{
+  color: green;
+}

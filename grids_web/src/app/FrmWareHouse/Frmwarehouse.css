@@ -1,0 +1,16 @@
+.actions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+}
+.actions>*{
+    cursor: pointer;
+}
+.create-new-warehouse{
+    margin: 10px 0;
+}
+.modal-body{
+    display: grid;
+}
