@@ -6,9 +6,26 @@
     overflow: auto;
 }
 label{
-    width: 25%;
+    width: 100%;
 }
 .form-group{
     display: flex;
     gap: 5px;
+}
+.selected{
+    background-color: var(--selected-row-color);
+}
+.form-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(185px,1fr));
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.w-fit-content{
+    width: fit-content!important;
+    padding: 10px 0;
+}
+.disabled{
+    cursor: not-allowed;
 }

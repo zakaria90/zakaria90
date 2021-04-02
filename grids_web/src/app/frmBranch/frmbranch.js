@@ -6,8 +6,8 @@ import './Frmbranch.css';
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import { Modal, Button } from 'react-bootstrap'
-const baseUrl = 'http://localhost:9000/bomain/frmbranch';
-
+import * as global from '../Models/global_params';
+import swal from 'sweetalert';
 export class FrmBranch extends Component {
     queryParams = '';
     bra_default_var;
@@ -17,7 +17,7 @@ export class FrmBranch extends Component {
         super(props);
         console.log(props.language)
         this.state = {
-            branch: {}
+            branch: []
 
         };
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -40,7 +40,7 @@ export class FrmBranch extends Component {
                 {
                     label: 'Yes',
                     onClick: () => {
-                        fetch(`${baseUrl}/del_branch?bra_name=${id}`)
+                        fetch(`${global.baseUrl}frmbranch/del_branch?bra_name=${id}`)
                             .then(response => response)
                             .then(response => {
                                 if (!response.error)
@@ -62,7 +62,7 @@ export class FrmBranch extends Component {
 
     ///////////update method that call the update method from backend//////
     updateBranch = _ => {
-        fetch(`${baseUrl}/upd_branch?${this.queryParams}`)
+        fetch(`${global.baseUrl}frmbranch/upd_branch?${this.queryParams}`)
             .then(response => response)
             .then(response => {
                 if (!response.error)
@@ -76,13 +76,17 @@ export class FrmBranch extends Component {
 
     ///////////get method that call the select method from backend//////  
     getBranch = _ => {
-        fetch(`${baseUrl}/sel_branch`)
+        
+        fetch(`${global.baseUrl}frmbranch/sel_branch?bra_cmp_id=${global.cmp_id}`)
             .then(response => response.json())
             .then(response => {
-                if (!response.error)
+                if (!response.error) {
+                    console.log(response);
                     this.setState({ branch: response });
+
+                }
                 else {
-                    alert(response.error.originalError.message);
+                    swal("error", response.error.originalError.message, "error");
                 }
                 this.global.isFetching = false;
 
@@ -195,7 +199,7 @@ export class FrmBranch extends Component {
     /////////////////add branch that call the add branch from bacjend//////////////
     addProduct = _ => {
         const { branch } = this.state.branch;
-        fetch(baseUrl + `/add_branch?${this.queryParams}`)
+        fetch(global.baseUrl + `frmbranch/add_branch?${this.queryParams}`)
             .then(response => {
                 if (response.status === 200) {
                     this.getBranch();
@@ -227,9 +231,6 @@ export class FrmBranch extends Component {
         const name = "name"//this.props.config.language.length > 0 ? this.props.config.language.find(x => x.fl_paramname==='bra_name').fl_english : 'name';
         const address = "address" //this.props.config.language.length > 0 ? this.props.config.language.find(x => x.fl_paramname==='bra_address') ||'address' : 'address';
 
-        if (this.global.isFetching) {
-            return <h1>Loading</h1>;
-        }
         return (
             <div className='container-fluid'>
                 <button onClick={this.openModal.bind(this)} className="btn btn-xs btn-info create-new-branch">Create new branch</button>

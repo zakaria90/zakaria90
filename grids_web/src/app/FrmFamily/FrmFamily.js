@@ -24,11 +24,11 @@ export class FrmFamily extends Component {
 
                     this.fetchingFamilies(response.recordset);
                 } else {
-                    swal('Error', response.error);
+                    swal('Error', response.error,"error");
                 }
             })
     }
-    selectFamily(family) {
+    selectFamily(e, family) {
         this.props.config.detectFamilyClick(family);
     }
     ////////////////////////////Recrusion function////////////////////////////
@@ -40,7 +40,7 @@ export class FrmFamily extends Component {
                 const haveChildren = data.find(x => x.fa_parent === fmly.fa_name);
                 if (typeof haveChildren === 'undefined') {
                     res.push(<li key={fmly.fa_name} >
-                        <div className="nodeTitle" onClick={() => this.selectFamily(fmly)}>
+                        <div className="nodeTitle" onClick={(e) => this.selectFamily(e, fmly)}>
                             <span className="icon"><FontAwesomeIcon icon={faMinus}></FontAwesomeIcon>  {fmly.fa_newname}</span>
                             <div className="d-flex gap-10">
                                 <FontAwesomeIcon className="icon deleteIcon" icon={faTrash} onClick={() => { this.OpenDeleteConfirmation(fmly.fa_name) }}></FontAwesomeIcon>
@@ -86,7 +86,7 @@ export class FrmFamily extends Component {
                 this.updst_family(event, this.queryParams);
             }
         } else {
-            swal('this name is unavailable')
+            swal("Warning",'this name is unavailable','warning')
         }
     }
     addst_family = (event, params) => {
@@ -159,7 +159,7 @@ export class FrmFamily extends Component {
                     </Modal.Footer>
                 </form>
             </Modal>
-            );
+        );
     }
     closeModal() {
         this.setState({
@@ -176,7 +176,7 @@ export class FrmFamily extends Component {
         e.preventDefault();
         console.log(e);
         try {
-            this.selectFamily(family);
+            this.selectFamily(null, family);
             document.getElementById(family.fa_name).classList.toggle("expanded");
             e.target.querySelector('.rightAngle').classList.toggle("rotate");
 
@@ -268,7 +268,7 @@ export class FrmFamily extends Component {
                 if (!response.error) {
                     this.getFamilyData();
                 } else {
-                    swal("Error", this.response);
+                    swal("Error", this.response,"error");
                 }
             })
     }

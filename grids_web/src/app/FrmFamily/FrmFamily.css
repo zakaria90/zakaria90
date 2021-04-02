@@ -65,3 +65,7 @@ ul, #treeUrl {
 .updateIcon{
   color: green;
 }
+.selected{
+  background-color: var(--selected-row-color);
+  color:var(--primary-color);
+}
